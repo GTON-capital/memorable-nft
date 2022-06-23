@@ -1,6 +1,6 @@
 const { MerkleTree } = require("merkletreejs");
 const keccak256 = require("keccak256");
-const ropstenAddress = "0xb5b841E3C3DA1b3D7D24DCedAA62Dc5C99ca1429";
+const ropstenAddress = "0x09B68445437a3b9100440491aEA0dd6D479D3f46";
 const deployAddress = ropstenAddress;
 const whiteList = require("../whitelist.json");
 

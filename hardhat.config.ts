@@ -1,9 +1,9 @@
-import '@typechain/hardhat'
-import '@nomiclabs/hardhat-ethers'
+import "@typechain/hardhat";
+import "@nomiclabs/hardhat-ethers";
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
-require('dotenv').config();
-import "hardhat-gas-reporter"
+require("dotenv").config();
+import "hardhat-gas-reporter";
 
 import { resolve } from "path";
 import { config as dotenvConfig } from "dotenv";
@@ -11,11 +11,10 @@ dotenvConfig({ path: resolve(__dirname, "./.env") });
 
 const { PRIVATE_KEY, ETHERSCAN, POLYGONSCAN, FTMSCAN } = process.env;
 
- module.exports = {
+module.exports = {
   defaultNetwork: "hardhat",
   networks: {
-    hardhat: {
-    },
+    hardhat: {},
     mainnet: {
       url: "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
       accounts: [PRIVATE_KEY],
@@ -29,7 +28,7 @@ const { PRIVATE_KEY, ETHERSCAN, POLYGONSCAN, FTMSCAN } = process.env;
     ropsten: {
       url: "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
       accounts: [PRIVATE_KEY],
-      gasPrice: 244 * 1e9,
+      gasPrice: 3500 * 1e9,
       gasMultiplier: 1,
     },
     matic: {
@@ -41,6 +40,12 @@ const { PRIVATE_KEY, ETHERSCAN, POLYGONSCAN, FTMSCAN } = process.env;
       url: "https://matic-mumbai.chainstacklabs.com",
       accounts: [PRIVATE_KEY],
       gasPrice: 35000000000,
+    },
+    gton: {
+      url: "https://testnet.gton.network",
+      accounts: [PRIVATE_KEY],
+      gasPrice: 40 * 1e9,
+      gasMultiplier: 1,
     },
     ftm: {
       // url: "https://rpc.ankr.com/fantom",
@@ -57,35 +62,35 @@ const { PRIVATE_KEY, ETHERSCAN, POLYGONSCAN, FTMSCAN } = process.env;
   },
   etherscan: {
     apiKey: {
-        mainnet: ETHERSCAN,
-        ropsten: ETHERSCAN,
-        rinkeby: ETHERSCAN,
-        goerli: ETHERSCAN,
-        kovan: ETHERSCAN,
-        // ftm
-        opera: FTMSCAN,
-        ftmTestnet: FTMSCAN,
-        // polygon
-        polygon: POLYGONSCAN,
-        polygonMumbai: POLYGONSCAN,
-    }
+      mainnet: ETHERSCAN,
+      ropsten: ETHERSCAN,
+      rinkeby: ETHERSCAN,
+      goerli: ETHERSCAN,
+      kovan: ETHERSCAN,
+      // ftm
+      opera: FTMSCAN,
+      ftmTestnet: FTMSCAN,
+      // polygon
+      polygon: POLYGONSCAN,
+      polygonMumbai: POLYGONSCAN,
+    },
   },
   solidity: {
     version: "0.8.15",
     settings: {
       optimizer: {
         enabled: true,
-        runs: 200
-      }
-    }
+        runs: 200,
+      },
+    },
   },
   paths: {
     sources: "./contracts",
     tests: "./test",
     cache: "./cache",
-    artifacts: "./artifacts"
+    artifacts: "./artifacts",
   },
   mocha: {
-    timeout: 20000
-  }
-}
+    timeout: 20000,
+  },
+};
